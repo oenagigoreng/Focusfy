@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BelajarKu — Timer & Jadwal Belajar</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<main class="app">
+  <header class="topbar">
+    <div class="brand">📖 Belajar<span>Ku</span></div>
+    <button id="openSettings" class="icon-btn" aria-label="Pengaturan tampilan">🎨</button>
+  </header>
+
+  <section class="card timer-card">
+    <p class="muted" id="todayLabel"></p>
+    <div id="timerDisplay" class="timer">00:00:00</div>
+    <select id="subjectSelect" aria-label="Mata pelajaran"></select>
+    <div class="row center">
+      <button id="startBtn" class="btn primary">▶ Mulai belajar</button>
+      <button id="stopBtn" class="btn" disabled>■ Selesai</button>
+    </div>
+    <div class="row">
+      <input id="newSubject" type="text" maxlength="20" placeholder="Tambah mata pelajaran" />
+      <button id="addSubject" class="btn small">Tambah</button>
+    </div>
+  </section>
+
+  <section class="stats">
+    <article class="card stat"><p>Hari ini</p><strong id="todayTotal">0j 0m</strong></article>
+    <article class="card stat"><p>Minggu ini</p><strong id="weekTotal">0j 0m</strong></article>
+    <article class="card stat"><p>Target harian</p><strong id="goalText">0%</strong></article>
+  </section>
+  <div class="progress"><div id="goalBar"></div></div>
+
+  <section class="grid">
+    <article class="card">
+      <h2>Jadwal & tugas</h2>
+      <form id="scheduleForm" class="stack">
+        <input id="schTitle" type="text" maxlength="50" placeholder="Contoh: Latihan soal Matematika" required />
+        <div class="row">
+          <input id="schDate" type="date" required />
+          <input id="schTime" type="time" />
+        </div>
+        <button class="btn primary" type="submit">Tambah jadwal</button>
+      </form>
+      <ul id="scheduleList" class="list"></ul>
+    </article>
+
+    <article class="card">
+      <h2>7 hari terakhir</h2>
+      <div id="chart" class="chart" aria-label="Grafik belajar 7 hari"></div>
+      <h2>Riwayat belajar</h2>
+      <ul id="historyList" class="list"></ul>
+    </article>
+  </section>
+</main>
+
+<div id="settingsPanel" class="panel" hidden>
+  <div class="card panel-box">
+    <div class="row between"><h2>Tampilan</h2><button id="closeSettings" class="icon-btn" aria-label="Tutup">✕</button></div>
+    <p class="muted">Pilih warna favoritmu</p>
+    <div id="swatches" class="swatches"></div>
+    <label class="row between">Warna sendiri <input id="customColor" type="color" /></label>
+    <label class="row between">Mode gelap <input id="darkToggle" type="checkbox" /></label>
+    <label class="row between">Target belajar/hari (jam) <input id="goalInput" type="number" min="1" max="16" step="0.5" /></label>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
